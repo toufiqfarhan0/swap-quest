@@ -2,15 +2,15 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Hand, HandRock, HandPaper, HandScissors } from 'lucide-react';
+import { Hand, HandMetal, HandScissors } from 'lucide-react';
 import GameResultDialog from './game-result-dialog';
 
 type Choice = 'rock' | 'paper' | 'scissors';
 const choices: Choice[] = ['rock', 'paper', 'scissors'];
 
 const choiceIcons = {
-  rock: <HandRock />,
-  paper: <HandPaper />,
+  rock: <HandMetal />,
+  paper: <Hand />,
   scissors: <HandScissors />,
 };
 
