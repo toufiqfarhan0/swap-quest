@@ -11,7 +11,6 @@ import {
 } from '@/components/ui/alert-dialog';
 import { useCredits } from '@/context/credit-context';
 import { PartyPopper, Frown } from 'lucide-react';
-import { useEffect } from 'react';
 
 interface GameResultDialogProps {
   result: 'win' | 'lose' | 'draw' | null;
@@ -21,22 +20,19 @@ interface GameResultDialogProps {
 export default function GameResultDialog({ result, onPlayAgain }: GameResultDialogProps) {
   const { addCredits } = useCredits();
 
-  useEffect(() => {
-    if (result === 'win') {
-      addCredits(50);
-    }
-  }, [result, addCredits]);
-
   const isOpen = result !== null;
 
   const handlePlayAgain = () => {
+    if (result === 'win') {
+      addCredits(50);
+    }
     onPlayAgain();
   };
 
   if (!isOpen) return null;
 
   return (
-    <AlertDialog open={isOpen}>
+    <AlertDialog open={isOpen} onOpenChange={(open) => !open && handlePlayAgain()}>
       <AlertDialogContent>
         <AlertDialogHeader>
           <div className="flex justify-center items-center mb-4">
