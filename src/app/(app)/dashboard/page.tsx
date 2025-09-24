@@ -1,3 +1,5 @@
+'use client';
+
 import { BarChart, Coins, Gamepad2, Trophy } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
 import {
