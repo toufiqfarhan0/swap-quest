@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Hand, HandMetal, HandScissors } from 'lucide-react';
+import { Hand, HandMetal, Scissors } from 'lucide-react';
 import GameResultDialog from './game-result-dialog';
 
 type Choice = 'rock' | 'paper' | 'scissors';
@@ -11,7 +11,7 @@ const choices: Choice[] = ['rock', 'paper', 'scissors'];
 const choiceIcons = {
   rock: <HandMetal />,
   paper: <Hand />,
-  scissors: <HandScissors />,
+  scissors: <Scissors />,
 };
 
 export default function RockPaperScissors() {
@@ -53,7 +53,7 @@ export default function RockPaperScissors() {
   };
 
   const determineWinner = (player: Choice, computer: Choice) => {
-    if (player === computer) return 'It\'s a draw!';
+    if (player === computer) return "It's a draw!";
     if (
       (player === 'rock' && computer === 'scissors') ||
       (player === 'scissors' && computer === 'paper') ||
