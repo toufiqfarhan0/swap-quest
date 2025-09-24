@@ -4,76 +4,74 @@
 
 @layer base {
   :root {
-    --background: 146 50% 36%; /* #2E8B57 */
-    --foreground: 0 0% 98%;
-    --card: 146 40% 42%;
-    --card-foreground: 0 0% 98%;
-    --popover: 146 50% 30%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 90 100% 50%; /* #7CFC00 */
-    --primary-foreground: 146 50% 15%;
-    --secondary: 146 40% 48%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 146 40% 48%;
-    --muted-foreground: 0 0% 70%;
-    --accent: 80 61% 50%; /* #9ACD32 */
-    --accent-foreground: 146 50% 15%;
-    --destructive: 0 84.2% 60.2%;
+    --background: 150 50% 10%;
+    --foreground: 90 85% 90%;
+    --card: 150 40% 15%;
+    --card-foreground: 90 85% 90%;
+    --popover: 150 50% 12%;
+    --popover-foreground: 90 85% 90%;
+    --primary: 90 100% 50%;
+    --primary-foreground: 90 100% 10%;
+    --secondary: 150 40% 25%;
+    --secondary-foreground: 90 85% 90%;
+    --muted: 150 30% 20%;
+    --muted-foreground: 90 40% 70%;
+    --accent: 80 61% 50%;
+    --accent-foreground: 80 100% 10%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 146 40% 48%;
-    --input: 146 40% 48%;
-    --ring: 80 61% 50%;
+    --border: 150 50% 25%;
+    --input: 150 50% 25%;
+    --ring: 90 100% 50%;
     --radius: 0.5rem;
     --chart-1: 90 100% 50%;
     --chart-2: 80 61% 50%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-
-    --sidebar-background: 146 50% 30%;
-    --sidebar-foreground: 0 0% 98%;
+    --sidebar-background: 150 50% 8%;
+    --sidebar-foreground: 90 85% 90%;
     --sidebar-primary: 90 100% 50%;
-    --sidebar-primary-foreground: 146 50% 15%;
-    --sidebar-accent: 146 50% 38%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 146 40% 48%;
-    --sidebar-ring: 80 61% 50%;
+    --sidebar-primary-foreground: 90 100% 10%;
+    --sidebar-accent: 150 40% 20%;
+    --sidebar-accent-foreground: 90 85% 90%;
+    --sidebar-border: 150 50% 25%;
+    --sidebar-ring: 90 100% 50%;
   }
 
   .dark {
-    --background: 146 50% 36%; /* #2E8B57 */
-    --foreground: 0 0% 98%;
-    --card: 146 40% 42%;
-    --card-foreground: 0 0% 98%;
-    --popover: 146 50% 30%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 90 100% 50%; /* #7CFC00 */
-    --primary-foreground: 146 50% 15%;
-    --secondary: 146 40% 48%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 146 40% 48%;
-    --muted-foreground: 0 0% 70%;
-    --accent: 80 61% 50%; /* #9ACD32 */
-    --accent-foreground: 146 50% 15%;
-    --destructive: 0 62.8% 30.6%;
+    --background: 150 50% 10%;
+    --foreground: 90 85% 90%;
+    --card: 150 40% 15%;
+    --card-foreground: 90 85% 90%;
+    --popover: 150 50% 12%;
+    --popover-foreground: 90 85% 90%;
+    --primary: 90 100% 50%;
+    --primary-foreground: 90 100% 10%;
+    --secondary: 150 40% 25%;
+    --secondary-foreground: 90 85% 90%;
+    --muted: 150 30% 20%;
+    --muted-foreground: 90 40% 70%;
+    --accent: 80 61% 50%;
+    --accent-foreground: 80 100% 10%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 146 40% 48%;
-    --input: 146 40% 48%;
-    --ring: 80 61% 50%;
+    --border: 150 50% 25%;
+    --input: 150 50% 25%;
+    --ring: 90 100% 50%;
     --chart-1: 90 100% 50%;
     --chart-2: 80 61% 50%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-
-    --sidebar-background: 146 50% 30%;
-    --sidebar-foreground: 0 0% 98%;
+    --sidebar-background: 150 50% 8%;
+    --sidebar-foreground: 90 85% 90%;
     --sidebar-primary: 90 100% 50%;
-    --sidebar-primary-foreground: 146 50% 15%;
-    --sidebar-accent: 146 50% 38%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 146 40% 48%;
-    --sidebar-ring: 80 61% 50%;
+    --sidebar-primary-foreground: 90 100% 10%;
+    --sidebar-accent: 150 40% 20%;
+    --sidebar-accent-foreground: 90 85% 90%;
+    --sidebar-border: 150 50% 25%;
+    --sidebar-ring: 90 100% 50%;
   }
 }
 
@@ -84,5 +82,11 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+}
+
+@layer components {
+  .card {
+    box-shadow: 0 0 2px hsl(var(--primary) / 0.5), 0 0 5px hsl(var(--primary) / 0.3);
   }
 }
