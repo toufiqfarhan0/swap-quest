@@ -6,7 +6,6 @@ import {
   Coins,
   Gamepad2,
   LayoutDashboard,
-  PlusCircle,
   Repeat,
   Swords,
   Trophy,
@@ -36,7 +35,6 @@ const menuItems = [
   { href: '/play', label: 'Play Games', icon: Swords },
   { href: '/leaderboards', label: 'Leaderboards', icon: Trophy },
   { href: '/events', label: 'Events', icon: Calendar },
-  { href: '/create-game', label: 'Create Game', icon: PlusCircle },
 ];
 
 function UserProfile() {
