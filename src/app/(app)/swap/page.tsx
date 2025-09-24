@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { PageHeader } from '@/components/page-header';
 import {
   Card,
@@ -31,6 +32,13 @@ const tokens = [
 ];
 
 export default function SwapPage() {
+  const [useCredits, setUseCredits] = useState(true);
+
+  const swapFee = 1.50;
+  const creditDiscount = 1.50; // assuming 1,250 credits can cover $1.50
+
+  const finalFee = useCredits ? Math.max(0, swapFee - creditDiscount) : swapFee;
+
   return (
     <div className="p-4 sm:p-6 lg:p-8 max-w-2xl mx-auto">
       <PageHeader
@@ -109,21 +117,23 @@ export default function SwapPage() {
                       <p className="text-xs text-muted-foreground">You have 1,250 credits available.</p>
                   </div>
               </div>
-            <Switch id="use-credits" defaultChecked />
+            <Switch id="use-credits" checked={useCredits} onCheckedChange={setUseCredits} />
           </div>
 
           <div className="text-sm text-muted-foreground space-y-1">
             <div className="flex justify-between">
               <span>Swap Fee:</span>
-              <span className="line-through">$1.50</span>
+              <span className={useCredits ? "line-through" : ""}>${swapFee.toFixed(2)}</span>
             </div>
-            <div className="flex justify-between">
-              <span>Credit Discount:</span>
-              <span className="text-accent">-$1.50</span>
-            </div>
+            {useCredits && (
+              <div className="flex justify-between">
+                <span>Credit Discount:</span>
+                <span className="text-accent">-${creditDiscount.toFixed(2)}</span>
+              </div>
+            )}
              <div className="flex justify-between font-semibold text-foreground">
               <span>Final Fee:</span>
-              <span>$0.00</span>
+              <span>${finalFee.toFixed(2)}</span>
             </div>
           </div>
         </CardContent>
