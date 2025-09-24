@@ -56,7 +56,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 <Link href={item.href} passHref>
                   <SidebarMenuButton
                     asChild
-                    isActive={pathname === item.href}
+                    isActive={pathname.startsWith(item.href) && (item.href !== '/' || pathname === '/')}
                     tooltip={item.label}
                   >
                     <span>

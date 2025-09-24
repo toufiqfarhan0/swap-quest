@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { PageHeader } from '@/components/page-header';
 import {
   Card,
@@ -42,10 +43,12 @@ export default function PlayPage() {
               <CardDescription>{game.description}</CardDescription>
             </CardContent>
             <CardFooter className="p-6 pt-0">
-              <Button className="w-full font-bold">
-                <Gamepad2 className="mr-2 h-4 w-4" />
-                Play Now
-              </Button>
+              <Link href={`/play/${game.id}`} className='w-full'>
+                <Button className="w-full font-bold">
+                  <Gamepad2 className="mr-2 h-4 w-4" />
+                  Play Now
+                </Button>
+              </Link>
             </CardFooter>
           </Card>
         ))}
