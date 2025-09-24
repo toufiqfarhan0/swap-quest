@@ -31,32 +31,37 @@ const tokens = [
   { id: 'wbtc', name: 'Wrapped BTC', symbol: 'WBTC', price: 63125.75 },
 ];
 
+const SWAP_FEE_PERCENTAGE = 0.005; // 0.5%
+
 export default function SwapPage() {
   const [useCredits, setUseCredits] = useState(true);
   const [fromToken, setFromToken] = useState('eth');
   const [toToken, setToToken] = useState('usdc');
   const [fromAmount, setFromAmount] = useState('1.5');
   const [toAmount, setToAmount] = useState('');
+  const [swapFee, setSwapFee] = useState(0);
 
-  const swapFee = 1.50;
+  const fromTokenData = tokens.find(t => t.id === fromToken);
   const creditDiscount = 1.50; // assuming 1,250 credits can cover $1.50
   const finalFee = useCredits ? Math.max(0, swapFee - creditDiscount) : swapFee;
   
-  const calculateConversion = () => {
-    const fromTokenData = tokens.find(t => t.id === fromToken);
+  const calculateConversionAndFee = () => {
     const toTokenData = tokens.find(t => t.id === toToken);
     const amount = parseFloat(fromAmount);
 
     if (fromTokenData && toTokenData && !isNaN(amount) && amount > 0) {
-      const convertedAmount = (amount * fromTokenData.price) / toTokenData.price;
+      const fromValue = amount * fromTokenData.price;
+      const convertedAmount = fromValue / toTokenData.price;
       setToAmount(convertedAmount.toFixed(4));
+      setSwapFee(fromValue * SWAP_FEE_PERCENTAGE);
     } else {
       setToAmount('');
+      setSwapFee(0);
     }
   };
 
   useEffect(() => {
-    calculateConversion();
+    calculateConversionAndFee();
   }, [fromAmount, fromToken, toToken]);
 
   const handleFromAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -68,9 +73,7 @@ export default function SwapPage() {
     setFromToken(toToken);
     setToToken(tempToken);
 
-    const tempAmount = fromAmount;
-    setFromAmount(toAmount);
-    setToAmount(tempAmount);
+    // No need to swap amounts, useEffect will recalculate
   }
 
   return (
