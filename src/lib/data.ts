@@ -97,3 +97,37 @@ export const creditHistory: ChartData[] = [
     { month: 'May', credits: Math.floor(Math.random() * 2000) + 500 },
     { month: 'Jun', credits: Math.floor(Math.random() * 2000) + 500 },
 ];
+
+export type Event = {
+  id: string;
+  title: string;
+  protocol: string;
+  description: string;
+  date: string;
+  participants: number;
+  reward: string;
+  image: ImagePlaceholder;
+};
+
+export const events: Event[] = [
+  {
+    id: 'aave-event',
+    title: 'Aave Governance Summit',
+    protocol: 'Aave',
+    description: 'Join the discussion on the future of Aave protocol and vote on key proposals.',
+    date: 'Dec 15, 2024',
+    participants: 2500,
+    reward: '100 AAVE tokens for active participants',
+    image: PlaceHolderImages[4],
+  },
+  {
+    id: 'uniswap-event',
+    title: 'Uniswap v4 Hackathon',
+    protocol: 'Uniswap',
+    description: 'Build innovative solutions on top of the new Uniswap v4 protocol.',
+    date: 'Jan 10, 2025',
+    participants: 1200,
+    reward: 'Prize pool of 50,000 UNI tokens',
+    image: PlaceHolderImages[5],
+  }
+];

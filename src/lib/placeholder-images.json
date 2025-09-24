@@ -9,7 +9,7 @@
     {
       "id": "game-2",
       "description": "Abstract choices background",
-      "imageUrl": "https://images.unsplash.com/photo-1506793923318-563d36de437e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageUrl": "https://images.unsplash.com/photo-1604147706283-d7119b5b822c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "rock paper scissors"
     },
     {
@@ -23,6 +23,18 @@
       "description": "DeFi themed trivia game background",
       "imageUrl": "https://images.unsplash.com/photo-1669881336715-5a51a78d5434?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkaWdpdGFsJTIwY3VycmVuY3l8ZW58MHx8fHwxNzU4NzIwNjg4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "quiz game"
+    },
+    {
+      "id": "event-1",
+      "description": "Conference hall for a summit",
+      "imageUrl": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "conference summit"
+    },
+    {
+      "id": "event-2",
+      "description": "People collaborating at a hackathon",
+      "imageUrl": "https://images.unsplash.com/photo-1587440871875-191322ee64b0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "hackathon collaboration"
     }
   ]
 }

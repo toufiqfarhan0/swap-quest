@@ -11,6 +11,7 @@ import {
   Swords,
   Trophy,
   User,
+  Calendar,
 } from 'lucide-react';
 
 import { Icons } from '@/components/icons';
@@ -34,6 +35,7 @@ const menuItems = [
   { href: '/swap', label: 'Swap', icon: Repeat },
   { href: '/play', label: 'Play Games', icon: Swords },
   { href: '/leaderboards', label: 'Leaderboards', icon: Trophy },
+  { href: '/events', label: 'Events', icon: Calendar },
   { href: '/create-game', label: 'Create Game', icon: PlusCircle },
 ];
 
