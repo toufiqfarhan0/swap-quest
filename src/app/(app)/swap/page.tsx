@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { PageHeader } from '@/components/page-header';
 import {
   Card,
@@ -25,19 +25,53 @@ import { Switch } from '@/components/ui/switch';
 import { Separator } from '@/components/ui/separator';
 
 const tokens = [
-  { id: 'eth', name: 'Ethereum', symbol: 'ETH' },
-  { id: 'usdc', name: 'USD Coin', symbol: 'USDC' },
-  { id: 'dai', name: 'Dai', symbol: 'DAI' },
-  { id: 'wbtc', name: 'Wrapped BTC', symbol: 'WBTC' },
+  { id: 'eth', name: 'Ethereum', symbol: 'ETH', price: 2069.50 },
+  { id: 'usdc', name: 'USD Coin', symbol: 'USDC', price: 1.00 },
+  { id: 'dai', name: 'Dai', symbol: 'DAI', price: 1.00 },
+  { id: 'wbtc', name: 'Wrapped BTC', symbol: 'WBTC', price: 63125.75 },
 ];
 
 export default function SwapPage() {
   const [useCredits, setUseCredits] = useState(true);
+  const [fromToken, setFromToken] = useState('eth');
+  const [toToken, setToToken] = useState('usdc');
+  const [fromAmount, setFromAmount] = useState('1.5');
+  const [toAmount, setToAmount] = useState('');
 
   const swapFee = 1.50;
   const creditDiscount = 1.50; // assuming 1,250 credits can cover $1.50
-
   const finalFee = useCredits ? Math.max(0, swapFee - creditDiscount) : swapFee;
+  
+  const calculateConversion = () => {
+    const fromTokenData = tokens.find(t => t.id === fromToken);
+    const toTokenData = tokens.find(t => t.id === toToken);
+    const amount = parseFloat(fromAmount);
+
+    if (fromTokenData && toTokenData && !isNaN(amount) && amount > 0) {
+      const convertedAmount = (amount * fromTokenData.price) / toTokenData.price;
+      setToAmount(convertedAmount.toFixed(4));
+    } else {
+      setToAmount('');
+    }
+  };
+
+  useEffect(() => {
+    calculateConversion();
+  }, [fromAmount, fromToken, toToken]);
+
+  const handleFromAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFromAmount(e.target.value);
+  };
+  
+  const handleTokenSwap = () => {
+    const tempToken = fromToken;
+    setFromToken(toToken);
+    setToToken(tempToken);
+
+    const tempAmount = fromAmount;
+    setFromAmount(toAmount);
+    setToAmount(tempAmount);
+  }
 
   return (
     <div className="p-4 sm:p-6 lg:p-8 max-w-2xl mx-auto">
@@ -60,9 +94,10 @@ export default function SwapPage() {
                 type="number"
                 placeholder="0.0"
                 className="text-lg"
-                defaultValue="1.5"
+                value={fromAmount}
+                onChange={handleFromAmountChange}
               />
-              <Select defaultValue="eth">
+              <Select value={fromToken} onValueChange={setFromToken}>
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="Select token" />
                 </SelectTrigger>
@@ -77,7 +112,7 @@ export default function SwapPage() {
             </div>
           </div>
           <div className="flex justify-center -my-2">
-            <Button variant="ghost" size="icon" className="bg-card">
+            <Button variant="ghost" size="icon" className="bg-card" onClick={handleTokenSwap}>
               <ArrowDownUp className="h-5 w-5 text-muted-foreground" />
             </Button>
           </div>
@@ -89,10 +124,10 @@ export default function SwapPage() {
                 type="number"
                 placeholder="0.0"
                 className="text-lg"
-                defaultValue="3104.25"
+                value={toAmount}
                 readOnly
               />
-              <Select defaultValue="usdc">
+              <Select value={toToken} onValueChange={setToToken}>
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="Select token" />
                 </SelectTrigger>
