@@ -27,6 +27,7 @@ import {
   SidebarInset,
 } from '@/components/ui/sidebar';
 import { Separator } from '@/components/ui/separator';
+import { CreditProvider, useCredits } from '@/context/credit-context';
 
 const menuItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -36,7 +37,28 @@ const menuItems = [
   { href: '/create-game', label: 'Create Game', icon: PlusCircle },
 ];
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+function UserProfile() {
+  const { credits } = useCredits();
+
+  return (
+     <SidebarMenuItem>
+        <SidebarMenuButton>
+          <Avatar className="size-7">
+            <AvatarImage src="https://i.pravatar.cc/40?u=a042581f4e29026701d" alt="User Avatar" />
+            <AvatarFallback>
+              <User />
+            </AvatarFallback>
+          </Avatar>
+          <span>
+            <span className="font-semibold">PlayerOne</span>
+            <span className="text-xs text-muted-foreground block">{credits.toLocaleString()} Credits</span>
+          </span>
+        </SidebarMenuButton>
+    </SidebarMenuItem>
+  )
+}
+
+function AppLayoutContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   return (
@@ -74,24 +96,20 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
         <SidebarFooter>
           <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton>
-                <Avatar className="size-7">
-                  <AvatarImage src="https://i.pravatar.cc/40?u=a042581f4e29026701d" alt="User Avatar" />
-                  <AvatarFallback>
-                    <User />
-                  </AvatarFallback>
-                </Avatar>
-                <span>
-                  <span className="font-semibold">PlayerOne</span>
-                  <span className="text-xs text-muted-foreground block">1250 Credits</span>
-                </span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
+            <UserProfile />
           </SidebarMenu>
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>{children}</SidebarInset>
     </SidebarProvider>
   );
+}
+
+
+export default function AppLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <CreditProvider>
+      <AppLayoutContent>{children}</AppLayoutContent>
+    </CreditProvider>
+  )
 }

@@ -23,6 +23,7 @@ import {
 import { ArrowDownUp, Coins, Wallet } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Separator } from '@/components/ui/separator';
+import { useCredits } from '@/context/credit-context';
 
 const tokens = [
   { id: 'eth', name: 'Ethereum', symbol: 'ETH', price: 2069.50 },
@@ -34,7 +35,8 @@ const tokens = [
 const SWAP_FEE_PERCENTAGE = 0.005; // 0.5%
 
 export default function SwapPage() {
-  const [useCredits, setUseCredits] = useState(true);
+  const { credits } = useCredits();
+  const [useCreditsForFee, setUseCreditsForFee] = useState(true);
   const [fromToken, setFromToken] = useState('eth');
   const [toToken, setToToken] = useState('usdc');
   const [fromAmount, setFromAmount] = useState('1.5');
@@ -42,10 +44,15 @@ export default function SwapPage() {
   const [swapFee, setSwapFee] = useState(0);
 
   const fromTokenData = tokens.find(t => t.id === fromToken);
-  const creditDiscount = 1.50; // assuming 1,250 credits can cover $1.50
-  const finalFee = useCredits ? Math.max(0, swapFee - creditDiscount) : swapFee;
+  
+  // Assuming 1 credit = $0.0012, so 1250 credits = $1.50
+  const creditValue = 0.0012; 
+  const creditDiscount = Math.min(swapFee, credits * creditValue);
+  
+  const finalFee = useCreditsForFee ? Math.max(0, swapFee - creditDiscount) : swapFee;
   
   const calculateConversionAndFee = () => {
+    const fromTokenData = tokens.find(t => t.id === fromToken);
     const toTokenData = tokens.find(t => t.id === toToken);
     const amount = parseFloat(fromAmount);
 
@@ -72,8 +79,6 @@ export default function SwapPage() {
     const tempToken = fromToken;
     setFromToken(toToken);
     setToToken(tempToken);
-
-    // No need to swap amounts, useEffect will recalculate
   }
 
   return (
@@ -152,18 +157,18 @@ export default function SwapPage() {
                   <Coins className="h-6 w-6 text-accent"/>
                   <div>
                       <Label htmlFor="use-credits">Use Credits for Fee</Label>
-                      <p className="text-xs text-muted-foreground">You have 1,250 credits available.</p>
+                      <p className="text-xs text-muted-foreground">You have {credits.toLocaleString()} credits available.</p>
                   </div>
               </div>
-            <Switch id="use-credits" checked={useCredits} onCheckedChange={setUseCredits} />
+            <Switch id="use-credits" checked={useCreditsForFee} onCheckedChange={setUseCreditsForFee} />
           </div>
 
           <div className="text-sm text-muted-foreground space-y-1">
             <div className="flex justify-between">
               <span>Swap Fee:</span>
-              <span className={useCredits ? "line-through" : ""}>${swapFee.toFixed(2)}</span>
+              <span className={useCreditsForFee && creditDiscount > 0 ? "line-through" : ""}>${swapFee.toFixed(2)}</span>
             </div>
-            {useCredits && (
+            {useCreditsForFee && creditDiscount > 0 && (
               <div className="flex justify-between">
                 <span>Credit Discount:</span>
                 <span className="text-accent">-${creditDiscount.toFixed(2)}</span>

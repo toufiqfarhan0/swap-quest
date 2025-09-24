@@ -24,6 +24,7 @@ import {
   YAxis,
 } from 'recharts';
 import type { ChartConfig } from '@/components/ui/chart';
+import { useCredits } from '@/context/credit-context';
 
 const chartConfig = {
   credits: {
@@ -33,6 +34,7 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export default function DashboardPage() {
+  const { credits } = useCredits();
   return (
     <div className="p-4 sm:p-6 lg:p-8">
       <PageHeader
@@ -48,7 +50,7 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              {userStats.totalCredits.toLocaleString()}
+              {credits.toLocaleString()}
             </div>
             <p className="text-xs text-muted-foreground">+201 from last week</p>
           </CardContent>

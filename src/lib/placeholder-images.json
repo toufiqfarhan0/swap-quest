@@ -2,39 +2,27 @@
   "placeholderImages": [
     {
       "id": "game-1",
-      "description": "Abstract puzzle game background",
-      "imageUrl": "https://images.unsplash.com/photo-1618219132780-9a67829f177e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhYnN0cmFjdCUyMHB1enpsZXxlbnwwfHx8fDE3NTg3MDc3ODF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "abstract puzzle"
+      "description": "Arcade style game background",
+      "imageUrl": "https://images.unsplash.com/photo-1511512578047-dfb367046420?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhcmNhZGUlMjBnYW1lfGVufDB8fHx8MTc1ODYzNzE4N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tic tac toe"
     },
     {
       "id": "game-2",
-      "description": "Arcade style game background",
-      "imageUrl": "https://images.unsplash.com/photo-1511512578047-dfb367046420?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhcmNhZGUlMjBnYW1lfGVufDB8fHx8MTc1ODYzNzE4N3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "arcade game"
+      "description": "Abstract choices background",
+      "imageUrl": "https://images.unsplash.com/photo-1506793923318-563d36de437e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "rock paper scissors"
     },
     {
       "id": "game-3",
-      "description": "DeFi themed trivia game background",
-      "imageUrl": "https://images.unsplash.com/photo-1669881336715-5a51a78d5434?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkaWdpdGFsJTIwY3VycmVuY3l8ZW58MHx8fHwxNzU4NzIwNjg4fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "digital currency"
+      "description": "Fast paced tapping game background",
+      "imageUrl": "https://images.unsplash.com/photo-1555421689-d68471e189f2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "tap game"
     },
     {
       "id": "game-4",
-      "description": "Clicker game with coins",
-      "imageUrl": "https://images.unsplash.com/photo-1517097473408-c0d7983cb95c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxnb2xkJTIwY29pbnN8ZW58MHx8fHwxNzU4NzIwNTk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "gold coins"
-    },
-    {
-      "id": "game-5",
-      "description": "A futuristic strategy game visual",
-      "imageUrl": "https://images.unsplash.com/photo-1561719998-e6763867e182?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxmdXR1cmlzdGljJTIwc3RyYXRlZ3l8ZW58MHx8fHwxNzU4NzIwNjg4fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "futuristic strategy"
-    },
-    {
-      "id": "game-6",
-      "description": "A fantasy world for an adventure game",
-      "imageUrl": "https://images.unsplash.com/photo-1548445929-4f60a497f851?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxmYW50YXN5JTIwd29ybGR8ZW58MHx8fHwxNzU4NzIwNjg4fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "fantasy world"
+      "description": "DeFi themed trivia game background",
+      "imageUrl": "https://images.unsplash.com/photo-1669881336715-5a51a78d5434?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkaWdpdGFsJTIwY3VycmVuY3l8ZW58MHx8fHwxNzU4NzIwNjg4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "quiz game"
     }
   ]
 }
